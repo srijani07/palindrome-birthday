@@ -43,9 +43,9 @@ if(closestPallindrome.getTime()>d.getTime()) {
 }
 
 
-// else if(typeof(numberofDays === "NaN")){
-// outputArea.innerHTML = "Sorry! There are no pallindrome dates in your birthyear.";
-// }
+else if(typeof(numberofDays === NaN)){
+outputArea.innerHTML = "Sorry! There are no pallindrome dates in your birthyear.";
+}
 
 else{
     outputArea.innerHTML = "Sorry! Your birthday is not a pallindrome. The nearest pallindrome date in your birthyear is "+datePallindrome+"-"+monthPallindrome+"-"+yearPallindrome+".\nYou missed it by : "+(numberofDays-1)+" day(s).";
