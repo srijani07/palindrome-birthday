@@ -3,9 +3,14 @@ var clickBtn = document.querySelector('#click-btn');
 var outputArea = document.querySelector('#output-area');
 
 var timeoutArea = document.querySelector('#timeout-area');
+// outputArea.style.display = "none";
 
 
 function clickHandler() {
+    if(userInput.value === "") {
+        outputArea.innerHTML = "Please enter an appropriate input.";
+    }
+    else {
     var userDate = userInput.value;
     var userYear = userDate.slice(0,4);
     var dateFirst = (userDate.slice(5,10)).split("-").reverse().join(""); //for the DD-MM-YYYY format
@@ -39,28 +44,29 @@ var monthPallindrome = closestPallindrome.getMonth()+1;
 var yearPallindrome = closestPallindrome.getFullYear();
 var numberofDays = Math.abs(Math.floor((closestPallindrome.getTime()-d.getTime())/(1000*24*60*60)));
 if(closestPallindrome.getTime()>d.getTime()) {
-    outputArea.innerHTML = "Sorry! Your birthday is not a pallindrome. The nearest pallindrome date in your birthyear is "+datePallindrome+"-"+monthPallindrome+"-"+yearPallindrome+".\nIt is in : "+(numberofDays+1)+" day(s).";
+    outputArea.innerHTML = "Sorry! Your birthday is not a pallindrome. The nearest pallindrome date in your birthyear is "+datePallindrome+"-"+monthPallindrome+"-"+yearPallindrome+".\nIt is in : "+(numberofDays+1)+" day(s)";
 }
 
 
-else if(typeof(numberofDays === NaN)){
+else if(isNaN(datePallindrome) === true){
 outputArea.innerHTML = "Sorry! There are no pallindrome dates in your birthyear.";
+console.log(numberofDays);
 }
 
 else{
     outputArea.innerHTML = "Sorry! Your birthday is not a pallindrome. The nearest pallindrome date in your birthyear is "+datePallindrome+"-"+monthPallindrome+"-"+yearPallindrome+".\nYou missed it by : "+(numberofDays-1)+" day(s).";
-
+    console.log(datePallindrome);
 }
-
+}
 }
 }
 function timeoutHandler() {
     var img = document.createElement("img");
- 
     img.src = "Clock.gif";
     var src = document.querySelector("#output-area");
      
-    src.appendChild(img);
+    // src.appendChild(img);
+    outputArea.innerHTML = "<img src='Clock.gif'>";
     myVar = setTimeout(clickHandler, 3000);
 
 }
